@@ -10,6 +10,10 @@ import Foundation
 struct PostModel {
     
     let identifier: String
+    
+    var islikeByCurrentUser = false
+    
+    
     static func mockModels() -> [PostModel]{
         var posts  = [PostModel]()
         

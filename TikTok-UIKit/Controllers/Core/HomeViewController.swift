@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
         scrollView.showsHorizontalScrollIndicator = false
         return scrollView
     }()
+    
     let control: UISegmentedControl = {
         let tittles = ["Following","For you"]
         let control = UISegmentedControl(items: tittles)
