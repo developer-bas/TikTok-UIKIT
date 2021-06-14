@@ -7,11 +7,17 @@
 
 import UIKit
 
+
+protocol PostViewControllerDelegate: AnyObject {
+    func postViewController(_ vc: PostViewController,didTapComment post: PostModel)
+}
+
+
 class PostViewController: UIViewController {
 
      var model : PostModel
     
-    
+    weak var delegate : PostViewControllerDelegate?
     
     private let likeButton : UIButton = {
         let button = UIButton()
@@ -100,6 +106,8 @@ class PostViewController: UIViewController {
         likeButton.tintColor = model.islikeByCurrentUser ? .systemRed : .white
     }
     @objc private func didTapComment(){
+        
+        delegate?.postViewController(self, didTapComment: model)
         
     }
     @objc private func didTapShare(){
