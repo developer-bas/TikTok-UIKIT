@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CommentsViewControllerDelegate: AnyObject {
-    func didTapCloseForComments(with viewControler: CommentViewController)
+    func didTapCloseForComments(with viewController: CommentViewController)
 }
 
 class CommentViewController: UIViewController {
@@ -16,6 +16,14 @@ class CommentViewController: UIViewController {
     private var post : PostModel
     
     weak var delegate : CommentsViewControllerDelegate?
+    
+    private var comments = [PostComment]()
+    
+    private let tableView: UITableView = {
+        let tableview = UITableView()
+        tableview.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        return tableview
+    }()
     
     private let closeButton: UIButton = {
         let button = UIButton()
@@ -42,22 +50,44 @@ class CommentViewController: UIViewController {
         view.backgroundColor = .white
         
         fetchPostComments()
-        
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
         
     }
     
     @objc private func didTapClose(){
+        print("From didtap")
         delegate?.didTapCloseForComments(with: self)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        closeButton.frame = CGRect(x: view.width - 60, y: 10, width: 50, height: 50)
         
+        
+        closeButton.frame = CGRect(x: view.width - 45, y: 10, width: 50, height: 30)
+        tableView.frame = CGRect(x: 0, y: closeButton.bottom, width: view.width, height: view.height - closeButton.bottom)
     }
 
     func fetchPostComments() {
-        
+         comments = PostComment.mocKComments()
     }
 
+}
+
+
+extension CommentViewController : UITableViewDelegate , UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let comment = comments[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        cell.textLabel?.text = comment.text
+        return cell
+    }
+    
+    
 }

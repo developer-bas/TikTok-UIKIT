@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol PostViewControllerDelegate: AnyObject {
-    func postViewController(_ vc: PostViewController,didTapComment post: PostModel)
+    func postViewController(_ vc: PostViewController,didTapCommentButtonFor post: PostModel)
 }
 
 
@@ -107,7 +107,7 @@ class PostViewController: UIViewController {
     }
     @objc private func didTapComment(){
         
-        delegate?.postViewController(self, didTapComment: model)
+        delegate?.postViewController(self, didTapCommentButtonFor: model)
         
     }
     @objc private func didTapShare(){
