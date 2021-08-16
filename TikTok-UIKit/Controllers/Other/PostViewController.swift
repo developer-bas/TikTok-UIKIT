@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import AVFoundation
 
 
 protocol PostViewControllerDelegate: AnyObject {
     func postViewController(_ vc: PostViewController,didTapCommentButtonFor post: PostModel)
+    func postViewController(_ vc: PostViewController,didTapProfileButtonFor post: PostModel)
 }
 
 
@@ -43,6 +45,15 @@ class PostViewController: UIViewController {
         return button
     }()
     
+    private let profileButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "person.circle"), for: .normal)
+        button.tintColor = .white
+        button.layer.masksToBounds = true
+        button.imageView?.contentMode = .scaleAspectFill
+        return button
+    }()
+    
     private let captionalLabel : UILabel = {
        let label = UILabel()
         label.textAlignment = .left
@@ -52,6 +63,9 @@ class PostViewController: UIViewController {
         label.textColor = .white
         return label
     }()
+    
+    var player : AVPlayer?
+    private var playerDidFinishObserver: NSObjectProtocol?
     
     //MARK: - INIT
     init(model: PostModel){
@@ -66,6 +80,7 @@ class PostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureVideo()
         let colos: [UIColor] = [.red,.darkGray,.green,.cyan,.orange, .brown,.gray,.yellow,.blue,.black,.systemPink]
         
         view.backgroundColor = colos.randomElement()
@@ -73,6 +88,9 @@ class PostViewController: UIViewController {
        setUpButtons()
         setUpDoubleTapToLike()
         view.addSubview(captionalLabel)
+        view.addSubview(profileButton)
+        profileButton.addTarget(self, action: #selector(didTapProfile), for: .touchUpInside)
+      
     }
   
 
@@ -88,6 +106,9 @@ class PostViewController: UIViewController {
         captionalLabel.sizeToFit()
         let labelSize = captionalLabel.sizeThatFits(CGSize(width: view.width - size - 12, height: view.height))
         captionalLabel.frame = CGRect(x: 5, y: view.height - 10 - view.safeAreaInsets.bottom - labelSize.height - (tabBarController?.tabBar.height ?? 0), width: view.width - size - 12, height: labelSize.height)
+        
+        profileButton.frame = CGRect(x: likeButton.left, y: likeButton.top - 10 - size , width: size, height: size)
+        profileButton.layer.cornerRadius = size / 2
     }
     
     func setUpButtons(){
@@ -100,6 +121,9 @@ class PostViewController: UIViewController {
         shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
     }
     
+    @objc func didTapProfile(){
+        delegate?.postViewController(self, didTapProfileButtonFor: model)
+    }
     
     @objc private func didTapLike(){
         model.islikeByCurrentUser = !model.islikeByCurrentUser
@@ -119,6 +143,31 @@ class PostViewController: UIViewController {
         present(vc, animated: true)
     }
     
+    private func configureVideo(){
+        guard let path = Bundle.main.path(forResource: "pexels-roman-odintsov-6421805", ofType: "mp4") else {
+            return
+        }
+        let url = URL(fileURLWithPath: path)
+        player = AVPlayer(url: url)
+        
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = view.bounds
+        playerLayer.videoGravity = .resizeAspectFill
+        view.layer.addSublayer(playerLayer)
+        player?.volume = 0
+        player?.play()
+        
+        guard let player = player else{return}
+        
+        playerDidFinishObserver = NotificationCenter.default.addObserver(
+            forName: .AVPlayerItemDidPlayToEndTime,
+            object: player.currentItem,
+            queue: .main, using: { _ in
+                
+                player.seek(to: .zero)
+                player.play()
+            })
+    }
     func setUpDoubleTapToLike(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap(_:)))
         tap.numberOfTapsRequired = 2

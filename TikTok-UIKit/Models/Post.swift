@@ -11,6 +11,8 @@ struct PostModel {
     
     let identifier: String
     
+    let user = User(username: "sebas", profilePictureURL: nil, identifier: UUID().uuidString)
+    
     var islikeByCurrentUser = false
     
     

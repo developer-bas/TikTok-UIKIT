@@ -29,9 +29,14 @@
 		151D05C02659ABF400216742 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151D05BF2659ABF400216742 /* Extensions.swift */; };
 		151D05C32659B43200216742 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151D05C22659B43200216742 /* Post.swift */; };
 		151D05C52659B48700216742 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151D05C42659B48700216742 /* PostViewController.swift */; };
+		151D902A26B2700000C0BACF /* pexels-roman-odintsov-6421805.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 151D902926B2700000C0BACF /* pexels-roman-odintsov-6421805.mp4 */; };
 		1522DFC926786364000A229E /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522DFC826786364000A229E /* PostComment.swift */; };
 		1522DFCB26786391000A229E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522DFCA26786391000A229E /* User.swift */; };
 		15EB7BC4267C440B00B685B3 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EB7BC3267C440B00B685B3 /* CommentTableViewCell.swift */; };
+		15EF211726B3A8230039CE87 /* ExploreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF211626B3A8230039CE87 /* ExploreSection.swift */; };
+		15EF211926B3A84A0039CE87 /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF211826B3A84A0039CE87 /* ExploreCell.swift */; };
+		15EF211B26B3A8870039CE87 /* ExploreSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF211A26B3A8870039CE87 /* ExploreSectionType.swift */; };
+		15EF211D26B3AA3D0039CE87 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF211C26B3AA3D0039CE87 /* ExploreViewModel.swift */; };
 		15F95E442675514A00FEC3C8 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F95E432675514A00FEC3C8 /* CommentViewController.swift */; };
 		EF1C1AA554700B1C0C807E95 /* Pods_TikTok_UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5BDB33B9B69AD6FE5BF20C /* Pods_TikTok_UIKit.framework */; };
 /* End PBXBuildFile section */
@@ -61,9 +66,14 @@
 		151D05BF2659ABF400216742 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		151D05C22659B43200216742 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		151D05C42659B48700216742 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		151D902926B2700000C0BACF /* pexels-roman-odintsov-6421805.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pexels-roman-odintsov-6421805.mp4"; sourceTree = "<group>"; };
 		1522DFC826786364000A229E /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
 		1522DFCA26786391000A229E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		15EB7BC3267C440B00B685B3 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		15EF211626B3A8230039CE87 /* ExploreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSection.swift; sourceTree = "<group>"; };
+		15EF211826B3A84A0039CE87 /* ExploreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
+		15EF211A26B3A8870039CE87 /* ExploreSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSectionType.swift; sourceTree = "<group>"; };
+		15EF211C26B3AA3D0039CE87 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 		15F95E432675514A00FEC3C8 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		60EC650AA47AEC67B77D647B /* Pods-TikTok-UIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTok-UIKit.release.xcconfig"; path = "Target Support Files/Pods-TikTok-UIKit/Pods-TikTok-UIKit.release.xcconfig"; sourceTree = "<group>"; };
 		AD6A7B754DAD6D25AB6D1F79 /* Pods-TikTok-UIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTok-UIKit.debug.xcconfig"; path = "Target Support Files/Pods-TikTok-UIKit/Pods-TikTok-UIKit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +137,7 @@
 			children = (
 				151D05BB2658D48100216742 /* GoogleService-Info.plist */,
 				151D058B2658A1F000216742 /* Assets.xcassets */,
+				151D902926B2700000C0BACF /* pexels-roman-odintsov-6421805.mp4 */,
 				151D05822658A1EF00216742 /* AppDelegate.swift */,
 				151D05842658A1EF00216742 /* SceneDelegate.swift */,
 				151D05BF2659ABF400216742 /* Extensions.swift */,
@@ -155,6 +166,7 @@
 		151D05992658A55200216742 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				15EF211C26B3AA3D0039CE87 /* ExploreViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -202,6 +214,9 @@
 				151D05C22659B43200216742 /* Post.swift */,
 				1522DFC826786364000A229E /* PostComment.swift */,
 				1522DFCA26786391000A229E /* User.swift */,
+				15EF211626B3A8230039CE87 /* ExploreSection.swift */,
+				15EF211826B3A84A0039CE87 /* ExploreCell.swift */,
+				15EF211A26B3A8870039CE87 /* ExploreSectionType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,6 +301,7 @@
 				151D058F2658A1F000216742 /* LaunchScreen.storyboard in Resources */,
 				151D058C2658A1F000216742 /* Assets.xcassets in Resources */,
 				151D05BC2658D48100216742 /* GoogleService-Info.plist in Resources */,
+				151D902A26B2700000C0BACF /* pexels-roman-odintsov-6421805.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,12 +374,14 @@
 				15F95E442675514A00FEC3C8 /* CommentViewController.swift in Sources */,
 				151D05B62658A79000216742 /* DatabaseManager.swift in Sources */,
 				151D05C02659ABF400216742 /* Extensions.swift in Sources */,
+				15EF211726B3A8230039CE87 /* ExploreSection.swift in Sources */,
 				15EB7BC4267C440B00B685B3 /* CommentTableViewCell.swift in Sources */,
 				151D059E2658A61200216742 /* ExploreViewController.swift in Sources */,
 				151D05A62658A68300216742 /* UserListViewController.swift in Sources */,
 				151D05AC2658A6CC00216742 /* SettingsViewController.swift in Sources */,
 				151D05A02658A62700216742 /* CameraViewController.swift in Sources */,
 				151D05AE2658A6FC00216742 /* TabBarViewController.swift in Sources */,
+				15EF211926B3A84A0039CE87 /* ExploreCell.swift in Sources */,
 				151D05872658A1EF00216742 /* HomeViewController.swift in Sources */,
 				151D05AA2658A6AC00216742 /* SignUpViewController.swift in Sources */,
 				1522DFCB26786391000A229E /* User.swift in Sources */,
@@ -377,7 +395,9 @@
 				151D05832658A1EF00216742 /* AppDelegate.swift in Sources */,
 				151D05C32659B43200216742 /* Post.swift in Sources */,
 				151D05BA2658A7CF00216742 /* HapticManager.swift in Sources */,
+				15EF211D26B3AA3D0039CE87 /* ExploreViewModel.swift in Sources */,
 				151D05852658A1EF00216742 /* SceneDelegate.swift in Sources */,
+				15EF211B26B3A8870039CE87 /* ExploreSectionType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
